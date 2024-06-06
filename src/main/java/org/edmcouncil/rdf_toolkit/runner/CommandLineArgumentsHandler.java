@@ -108,6 +108,7 @@ public class CommandLineArgumentsHandler {
     optionHandler.handleOmitXmlnsNamespace();
     optionHandler.handleSuppressNamedIndividuals();
     optionHandler.handleUseDefaultLanguage();
+    optionHandler.handleUseRDFCSerialisation();
 
     rdfToolkitOptions.setRunningMode(RUN_ON_FILE);
 

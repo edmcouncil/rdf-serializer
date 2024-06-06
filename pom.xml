@@ -118,6 +118,11 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>fr.inria.corese</groupId>
+      <artifactId>corese-core</artifactId>
+      <version>4.5.0</version>
+    </dependency>
   </dependencies>
 
   <build>

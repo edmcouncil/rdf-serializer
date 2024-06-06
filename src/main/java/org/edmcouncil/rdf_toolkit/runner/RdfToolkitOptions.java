@@ -80,6 +80,8 @@ public class RdfToolkitOptions {
   private boolean suppressNamedIndividuals;
   private String defaultLanguage;
 
+  private boolean useRDFCSerialisation;
+
   public RdfToolkitOptions(String[] args) {
     this.args = args;
   }
@@ -312,5 +314,13 @@ public class RdfToolkitOptions {
 
   public void setDefaultLanguage(String defaultLanguage) {
     this.defaultLanguage = defaultLanguage;
+  }
+
+  public boolean getUseRDFCSerialisation() {
+    return useRDFCSerialisation;
+  }
+
+  public void setUseRDFCSerialisation(boolean useRDFCSerialisation) {
+    this.useRDFCSerialisation = useRDFCSerialisation;
   }
 }

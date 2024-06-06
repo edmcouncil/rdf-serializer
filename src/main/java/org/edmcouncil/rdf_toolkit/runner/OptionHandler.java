@@ -24,28 +24,7 @@
 
 package org.edmcouncil.rdf_toolkit.runner;
 
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.BASE_IRI;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.INDENT;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.INFER_BASE_IRI;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.INLINE_BLANK_NODES;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.LEADING_COMMENT;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.LINE_END;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.OMIT_XMLNS_NAMESPACE;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.OVERRIDE_STRING_LANGUAGE;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SHORT_IRI_PRIORITY;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SOURCE;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SOURCE_DIRECTORY;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SOURCE_DIRECTORY_PATTERN;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SOURCE_FORMAT;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.STRING_DATA_TYPING;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.SUPPRESS_NAMED_INDIVIDUALS;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGET;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGET_DIRECTORY;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGET_DIRECTORY_PATTERN;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGET_FORMAT;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TRAILING_COMMENT;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.USE_DEFAULT_LANGUAGE;
-import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.USE_DTD_SUBSET;
+import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.*;
 import static org.edmcouncil.rdf_toolkit.runner.constant.RunningMode.PRINT_USAGE_AND_EXIT;
 import static org.edmcouncil.rdf_toolkit.runner.constant.RunningMode.RUN_ON_DIRECTORY;
 import org.apache.commons.cli.CommandLine;
@@ -399,5 +378,10 @@ public class OptionHandler {
       defaultLanguage = commandLine.getOptionValue(USE_DEFAULT_LANGUAGE.getShortOpt());
     }
     rdfToolkitOptions.setDefaultLanguage(defaultLanguage);
+  }
+
+  public void handleUseRDFCSerialisation() {
+    boolean useRDFCSerialisation = commandLine.hasOption(USE_RDFC_SERIALISATION.getShortOpt());
+    rdfToolkitOptions.setUseRDFCSerialisation(useRDFCSerialisation);
   }
 }
