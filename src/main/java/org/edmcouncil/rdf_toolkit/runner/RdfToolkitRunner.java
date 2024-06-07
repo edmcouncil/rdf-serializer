@@ -30,13 +30,12 @@ import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGE
 import static org.edmcouncil.rdf_toolkit.runner.constant.CommandLineOption.TARGET_DIRECTORY_PATTERN;
 
 import com.jcabi.manifests.Manifests;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import fr.inria.corese.core.Graph;
+import fr.inria.corese.core.load.Load;
+import fr.inria.corese.core.load.LoadException;
+import fr.inria.corese.core.print.ResultFormat;
+
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -110,6 +109,11 @@ public class RdfToolkitRunner {
   }
 
   private void runOnFile(RdfToolkitOptions rdfToolkitOptions) throws Exception {
+    var useRDFCSerialisation = rdfToolkitOptions.getUseRDFCSerialisation();
+    if (useRDFCSerialisation) {
+      useRDFCSerialisation(rdfToolkitOptions);
+      return;
+    }
     var sourceModel = readModel(rdfToolkitOptions);
     boolean isIriPatternAndIriReplacementNotNull = (rdfToolkitOptions.getIriPattern() != null)
         && (rdfToolkitOptions.getIriReplacement() != null);
@@ -330,5 +334,18 @@ public class RdfToolkitRunner {
         RdfFormatter.class.getSimpleName(),
         implementationTitle,
         implementationVersion);
+  }
+
+  private void useRDFCSerialisation(RdfToolkitOptions rdfToolkitOptions) throws LoadException, IOException {
+    File sourceFile = rdfToolkitOptions.getSourceFile();
+    Graph graph = Graph.create();
+    Load ld = Load.create(graph);
+    ld.parse(sourceFile.getAbsolutePath());
+    ResultFormat exporter = ResultFormat.create(graph, ResultFormat.N_QUADS);
+    String result = exporter.toString();
+    File targetFile = rdfToolkitOptions.getTargetFile();
+    FileWriter writer = new FileWriter(targetFile.getAbsolutePath());
+    writer.write(result);
+    writer.close();
   }
 }
