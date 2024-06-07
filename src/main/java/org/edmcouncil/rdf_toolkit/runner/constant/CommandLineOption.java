@@ -57,7 +57,7 @@ public enum CommandLineOption {
   OMIT_XMLNS_NAMESPACE("oxn", "omit-xmlns-namespace", false, "omits xmlns namespace"),
   SUPPRESS_NAMED_INDIVIDUALS("sni", "suppress-named-individuals", false, "suppresses all instances of owl:NamedIndividual"),
   USE_DEFAULT_LANGUAGE("udl", "use-default-language", true, "uses default language when a string is untyped and untagged"),
-  USE_RDFC_SERIALISATION("rdfc", "use-rdfc-serialisation",false,"serialise following RDFC1.0 serialisation");
+  USE_RDFC_SERIALISATION("urdfc", "use-rdfc-serialisation",false,"serialise following RDFC1.0 serialisation");
 
 
   private final String shortOpt;

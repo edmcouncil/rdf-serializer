@@ -105,6 +105,7 @@ java -jar rdf-toolkit.jar --source C:/source_ontologies/example.rdf --target C:/
  -tfmt,--target-format <arg>             target (output) RDF format: one of: json-ld (JSON-LD),
                                          rdf-xml (RDF/XML), turtle (Turtle) [default]
  -udl, --use-default-language <arg>      default language tag for untyped, untagged strings
+ -urdfc, --use-rdfc-serialisation        serialise following RDFC1.0 serialisation [default is False]
  -v,--version                            print out version details
 ```
 
