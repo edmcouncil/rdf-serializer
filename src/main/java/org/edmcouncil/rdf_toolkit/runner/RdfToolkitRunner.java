@@ -218,7 +218,7 @@ public class RdfToolkitRunner {
       String langString = lang.get();
       String[] langTab = langString.split("-");
       // Convert the second part of the language string to uppercase, except if the entire second part is 'x'
-      if (!langTab[1].equals("x")) { langTab[1] = langTab[1].toUpperCase(); }
+      if (!langTab[1].equals("x") && (langTab[1].length() == 2)) { langTab[1] = langTab[1].toUpperCase(); }
       langString = String.join("-", langTab);
       String label = ((Literal) modelObject).getLabel();
       modelObject = valueFactory.createLiteral(label, langString);
