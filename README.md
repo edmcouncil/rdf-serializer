@@ -16,7 +16,7 @@ The primary reason for creating this tool was to have a reference serializer for
 ## Minimize the ontology review effort 
 
 For the purposes of git-based version control of ontology files, we want to have as few differences between commits as possible.
-Most ontology editors can encode RDF graphs, including OWL ontologies, in several formats, including the W3C normative RDF exchange formats (syntaxes): RDF/XML and Turtle. However, even these normative formats are not canonical. Therefore, an editor tool may change many aspects of how ontology entities are serialized every time the ontology is saved (such as adding/changing comments or changing the order and organization of statements) leading to difficulties in analyzing actual changes in the underlying semantics.
+Most ontology editors can encode RDF graphs, including OWL ontologies, in several formats, including the W3C normative RDF exchange formats (syntaxes): RDF/XML, Turtle and JSON-LD. However, even these normative formats are not canonical. Therefore, an editor tool may change many aspects of how ontology entities are serialized every time the ontology is saved (such as adding/changing comments or changing the order and organization of statements) leading to difficulties in analyzing actual changes in the underlying semantics.
 
 ## Handle intelligent IRIs
 
@@ -24,9 +24,7 @@ We want to be able to include actionable information as part of IRIs, e.g., git 
 
 ## Recommended output format
 
-The recommended output format at this time is RDF/XML because that is the format that the [OMG](https://www.omg.org) requires for submissions. 
-The EDM Council develops the FIBO Ontologies and submits them as RDF/XML, serialized by the `RDF Toolkit` to the [OMG](https://www.omg.org). 
-So that is why we also use RDF/XML in Github itself. 
+The recommended output formats are RDF/XML or Turtle, because these are the formats that the [OMG](https://www.omg.org) allows for submissions. Several EDM Council projects, including the Financial Industry Business Ontology (FIBO), Identification of Medicinal Products (IDMP-O), and Industrial Ontologies Foundry (IOF), use and contribute to ontologies that are standardized by OMG and elsewhere. We submit these for review to the relevant stakeholder organization as RDF/XML and Turtle, serialized by the `RDF Toolkit`. Because RDF/XML was the original serialization recommended by the W3C, we initially designed the serializer to support that, but as others became recommendations, we added support for them as well. Some of our other tools leverage RDF/XML as the primary serialization for historical reasons, but the toolkit supports any of these and can translate between them. 
 
 # Requirements
 To run `RDF Toolkit` one needs JAVA JRE installed version 11+.
