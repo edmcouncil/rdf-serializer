@@ -487,7 +487,7 @@ public class SortedRdfXmlWriter extends SortedRdfWriter {
         output.writeAttribute(xmlPrefix, XML_NS_URI, "lang", overrideStringLanguage);
       } else if (languageOptional.isPresent()) {
         output.writeAttribute(xmlPrefix, XML_NS_URI, "lang", languageOptional.get());
-      } else if (useDefaultLanguage != null && datatype.equals(xsString)) {
+      } else if (useDefaultLanguage != null && xsString.equals(datatype)) {
         output.writeAttribute(xmlPrefix, XML_NS_URI, "lang", useDefaultLanguage);
       } else if (datatype != null) {
         if (shouldUseExplicitDatatypes(datatype)) {

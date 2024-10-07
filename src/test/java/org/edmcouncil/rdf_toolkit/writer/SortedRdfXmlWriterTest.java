@@ -1166,13 +1166,13 @@ class SortedRdfXmlWriterTest extends AbstractSortedWriterTest {
             "-s", inputFile.getAbsolutePath(),
             "-t", outputFile.getAbsolutePath(),
             "-tfmt", "rdf-xml",
-            "-udl", "de",
+            "-udl", "en",
         }
     );
 
     String content = getFileContents(outputFile, StandardCharsets.UTF_8.name());
     String label1Line = getTrimmedLineContainingString(content, "label1");
-    assertEquals("<rdfs:label xml:lang=\"de\">label1</rdfs:label>", label1Line);
+    assertEquals("<rdfs:label xml:lang=\"en\">label1</rdfs:label>", label1Line);
     String label2Line = getTrimmedLineContainingString(content, "label2");
     assertEquals("<rdfs:label xml:lang=\"en\">label2</rdfs:label>", label2Line);
     String label5Line = getTrimmedLineContainingString(content, "label5");

@@ -1090,13 +1090,13 @@ class SortedTurtleWriterTest extends AbstractSortedWriterTest {
             "-s", inputFile.getAbsolutePath(),
             "-t", outputFile.getAbsolutePath(),
             "-tfmt", "turtle",
-            "-udl", "de",
+            "-udl", "en",
         }
     );
 
     String content = getFileContents(outputFile, StandardCharsets.UTF_8.name());
     String label1Line = getTrimmedLineContainingString(content, "label1");
-    assertEquals("\"label1\"@de ,", label1Line);
+    assertEquals("\"label1\"@en ,", label1Line);
     String label2Line = getTrimmedLineContainingString(content, "label2");
     assertEquals("\"label2\"@en ,", label2Line);
     String label5Line = getTrimmedLineContainingString(content, "label5");

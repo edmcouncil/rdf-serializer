@@ -26,8 +26,7 @@ package org.edmcouncil.rdf_toolkit.writer;
 
 import static org.edmcouncil.rdf_toolkit.comparator.ComparisonUtils.getCollectionMembers;
 import static org.edmcouncil.rdf_toolkit.comparator.ComparisonUtils.isCollection;
-import static org.edmcouncil.rdf_toolkit.util.Constants.INDENT;
-import static org.edmcouncil.rdf_toolkit.util.Constants.LINE_END;
+import static org.edmcouncil.rdf_toolkit.util.Constants.*;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -500,26 +499,26 @@ public class SortedTurtleWriter extends SortedRdfWriter {
       return;
     }
 
-    IRI literalDatatype = literal.getDatatype();
+    IRI datatype = literal.getDatatype();
     Optional<String> languageOptional = literal.getLanguage();
 
-    if (overrideStringLanguage != null && (literalDatatype.equals(Constants.xsString) || languageOptional.isPresent())) {
+    if (overrideStringLanguage != null && (datatype.equals(Constants.xsString) || languageOptional.isPresent())) {
       writeString(out, literal.stringValue());
       out.write("@" + overrideStringLanguage);
     } else if (languageOptional.isPresent()) {
       writeString(out, literal.stringValue());
       out.write("@" + languageOptional.get());
-    } else if (useDefaultLanguage != null && literalDatatype.equals(Constants.xsString)) {
+    } else if (useDefaultLanguage != null && xsString.equals(datatype)) {
       writeString(out, literal.stringValue());
       out.write("@" + useDefaultLanguage);
-    } else if (literalDatatype != null) {
+    } else if (datatype != null) {
       boolean useExplicit =
           stringDataTypeOption == StringDataTypeOptions.EXPLICIT ||
-              !(Constants.xsString.equals(literalDatatype) || Constants.rdfLangString.equals(literalDatatype));
+              !(Constants.xsString.equals(datatype) || Constants.rdfLangString.equals(datatype));
       writeString(out, literal.stringValue());
       if (useExplicit) {
         out.write("^^");
-        writeIri(out, literalDatatype);
+        writeIri(out, datatype);
       }
     } else {
       writeString(out, literal.stringValue());

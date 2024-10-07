@@ -651,13 +651,13 @@ class SortedJsonLdWriterTest extends AbstractSortedWriterTest {
             "-s", inputFile.getAbsolutePath(),
             "-t", outputFile.getAbsolutePath(),
             "-tfmt", "json-ld",
-            "-udl", "de",
+            "-udl", "en",
         }
     );
 
     String content = getFileContents(outputFile, StandardCharsets.UTF_8.name());
     JsonNode label1Object = getJsonObjectForLabel(content, "label1");
-    assertEquals("de", label1Object.get(JSONLD_LANGUAGE).asText());
+    assertEquals("en", label1Object.get(JSONLD_LANGUAGE).asText());
     JsonNode label2Object = getJsonObjectForLabel(content, "label2");
     assertEquals("en", label2Object.get(JSONLD_LANGUAGE).asText());
     JsonNode label5Line = getJsonObjectForLabel(content, "label5");
